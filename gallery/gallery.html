@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galleri — justaleks.no</title>
+    <meta
+      name="description"
+      content="En samling fotografier og visuelle øyeblikk — Aleks"
+    />
+    <link rel="stylesheet" href="gallery.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../assets/placeholder-circle.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Grain overlay -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <!-- Tilbake-knapp -->
+      <a href="../index.html" class="back-link" style="margin-top: 32px">
+        <svg viewBox="0 0 24 24">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12,19 5,12 12,5" />
+        </svg>
+        Tilbake til portefølje
+      </a>
+
+      <!-- Header -->
+      <header class="gallery-header">
+        <span class="label">[ Galleri ]</span>
+        <h1 class="gallery-title">Øyeblikk<br /><em>fanget.</em></h1>
+        <p class="gallery-desc">
+          En samling fotografier jeg har tatt gjennom årene. Landskap,
+          stemninger, og ting som fanget blikket mitt akkurat lenge nok til at
+          jeg tok frem kameraet.
+        </p>
+      </header>
+
+      <!-- Filter -->
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn active" data-filter="all">Alle</button>
+        <button class="filter-btn" data-filter="natur">Natur</button>
+        <button class="filter-btn" data-filter="by">By & Arkitektur</button>
+        <button class="filter-btn" data-filter="hverdag">
+          Hverdagsøyeblikk
+        </button>
+        <button class="filter-btn" data-filter="mat">Mat</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Fylles av JavaScript -->
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">✕ Lukk</button>
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">
+        ←
+      </button>
+      <img src="" alt="" id="lightboxImg" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">
+        →
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gallery-footer">
+      <div class="wrap">
+        <p>
+          © 2025 Aleks — Alle bilder tatt av meg, med mindre annet er oppgitt
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* ══════════ GALLERI DATA ══════════ */
+      const GALLERY = [
+        {
+          src: "../assets/bilder/love_heart_tree.jpg",
+          title: "Kjærlighets tre, sen kveld",
+          category: "natur",
+          aspect: "tall",
+          ratio: "3/4",
+        },
+        {
+          src: "../assets/bilder/6_etg_heiskran(1).jpg",
+          title: "Skyete, Økern, Oslo",
+          category: "by",
+          aspect: "wide",
+          ratio: "16/10",
+        },
+        {
+          src: "../assets/bilder/karusell.jpg",
+          title: "Jul i vinterland, Oslo",
+          category: "natur",
+          aspect: "tall",
+          ratio: "3/4",
+        },
+        {
+          src: "../assets/bilder/solskinn_gjennom_himmel.jpg",
+          title: "Lys gjennom himmel, Oslo",
+          category: "natur",
+          aspect: "square",
+          ratio: "1/1",
+        },
+        {
+          src: "../assets/bilder/bygninger.jpg",
+          title: "Oslo, blå time",
+          category: "by",
+          aspect: "wide",
+          ratio: "16/10",
+        },
+        {
+          src: "../assets/bilder/stolpe(1).jpg",
+          title: "Sentrum, underfra",
+          category: "by",
+          aspect: "tall",
+          ratio: "3/4",
+        },
+        {
+          src: "../assets/bilder/solnedgang_hav.jpg",
+          title: "Solnedgang ved havet",
+          category: "natur",
+          aspect: "square",
+          ratio: "1/1",
+        },
+        {
+          src: "../assets/bilder/solnedgang_mellom_bygninger.jpg",
+          title: "Solnedgang mellom bygninger, Oslo",
+          category: "natur",
+          aspect: "square",
+          ratio: "1/1",
+        },
+        {
+          src: "../assets/bilder/solnedgang_treer.jpg",
+          title: "Solen bak trær, Oslo",
+          category: "natur",
+          aspect: "tall",
+          ratio: "3/4",
+        },
+        {
+          src: "../assets/bilder/6_etg(2).jpg",
+          title: "Tidlig morgen, Økern, Oslo",
+          category: "hverdag",
+          aspect: "square",
+          ratio: "1/1",
+        },
+        {
+          src: "../assets/bilder/purple_led_road.jpg",
+          title: "Tåkete, kveld",
+          category: "hverdag",
+          aspect: "wide",
+          ratio: "16/10",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+          title: "Kodeøkt, natt",
+          category: "hverdag",
+          aspect: "tall",
+          ratio: "3/4",
+        },
+      ];
+
+      /* ══════════ RENDER GALLERY ══════════ */
+      const grid = document.getElementById("galleryGrid");
+      let currentFilter = "all";
+      let lightboxIndex = -1;
+      let filteredItems = [];
+
+      function renderGallery(filter = "all") {
+        grid.innerHTML = "";
+        const items =
+          filter === "all"
+            ? GALLERY
+            : GALLERY.filter((item) => item.category === filter);
+
+        filteredItems = items;
+
+        items.forEach((item, i) => {
+          const div = document.createElement("div");
+          div.className = `gallery-item ${item.aspect}`;
+          div.style.animationDelay = `${i * 60}ms`;
+          div.style.setProperty("--ratio", item.ratio);
+          div.dataset.category = item.category;
+          div.onclick = () => openLightbox(i);
+
+          div.innerHTML = `
+                    <img src="${item.src}" alt="${item.title}" loading="lazy">
+                    <div class="item-overlay">
+                        <div class="item-info">
+                            <p class="item-title">${item.title}</p>
+                            <p class="item-meta">${item.category}</p>
+                        </div>
+                    </div>
+                `;
+
+          grid.appendChild(div);
+        });
+      }
+
+      /* ══════════ FILTER ══════════ */
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentFilter = btn.dataset.filter;
+          renderGallery(currentFilter);
+        });
+      });
+
+      /* ══════════ LIGHTBOX ══════════ */
+      function openLightbox(index) {
+        lightboxIndex = index;
+        const item = filteredItems[index];
+        const lb = document.getElementById("lightbox");
+        const img = document.getElementById("lightboxImg");
+        const caption = document.getElementById("lightboxCaption");
+
+        img.src = item.src;
+        caption.textContent = item.title;
+        lb.classList.add("open");
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lb = document.getElementById("lightbox");
+        lb.classList.remove("open");
+        document.body.style.overflow = "";
+        lightboxIndex = -1;
+      }
+
+      function navigateLightbox(direction) {
+        if (lightboxIndex === -1) return;
+        lightboxIndex += direction;
+
+        if (lightboxIndex < 0) lightboxIndex = filteredItems.length - 1;
+        if (lightboxIndex >= filteredItems.length) lightboxIndex = 0;
+
+        const item = filteredItems[lightboxIndex];
+        const img = document.getElementById("lightboxImg");
+        const caption = document.getElementById("lightboxCaption");
+
+        img.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          img.src = item.src;
+          caption.textContent = item.title;
+          img.style.transform = "scale(1)";
+        }, 200);
+      }
+
+      // Lukk lightbox med Escape
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") navigateLightbox(-1);
+        if (e.key === "ArrowRight") navigateLightbox(1);
+      });
+
+      // Klikk utenfor bildet for å lukke
+      document
+        .getElementById("lightbox")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeLightbox();
+        });
+
+      /* ══════════ INIT ══════════ */
+      renderGallery();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>justaleks.no — IT Developer && Visual Artist</title>
+    <meta
+      name="description"
+      content="A workspace at the seam of software and studio — code written like sketches, paintings shipped like releases."
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/x-icon" href="assets/placeholder-circle.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Grain -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <header id="navbar">
+      <div class="wrap">
+        <div class="nav-inner">
+          <button class="nav-logo mono" onclick="goTo('hero')">
+            JA<span>.</span>
+          </button>
+          <nav class="nav-links">
+            <button onclick="goTo('work')">Work</button>
+            <button onclick="goTo('gallery')">Gallery</button>
+            <button onclick="goTo('about')">About</button>
+            <button onclick="goTo('contact')">Contact</button>
+          </nav>
+          <button
+            class="nav-toggle"
+            onclick="toggleMenu()"
+            aria-label="Toggle menu"
+            id="menu-btn"
+          >
+            <svg id="icon-menu" viewBox="0 0 24 24">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+            <svg id="icon-close" viewBox="0 0 24 24" style="display: none">
+              <line x1="4" y1="4" x2="20" y2="20" />
+              <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="nav-drawer">
+        <div class="inner">
+          <button onclick="scrollTo('work')">Work</button>
+          <button onclick="scrollTo('gallery')">Gallery</button>
+          <button onclick="scrollTo('about')">About</button>
+          <button onclick="scrollTo('contact')">Contact</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="hero">
+      <div class="hero-bg">
+        <img
+          src="https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/adb4491ee434e1fc120ab8b677079d1a0c3f3184d28403485e08bfbd6ff96e5a.png"
+          alt=""
+          class="slow-pan"
+        />
+      </div>
+
+      <div class="hero-meta">
+        <div class="wrap hero-meta-inner">
+          <span class="label">[ Portfolio · 2025 ]</span>
+          <span class="label hidden-mob">Norway · 59.91°N 10.75°E</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="wrap">
+          <div class="hero-grid">
+            <div>
+              <p class="label hero-sub reveal">
+                &gt; IT Developer &amp;&amp; Visual Artist
+              </p>
+              <h1 class="hero-title reveal" style="transition-delay: 120ms">
+                Just<br /><em>Aleks</em>
+              </h1>
+            </div>
+            <div class="hero-aside">
+              <p class="hero-desc mono reveal" style="transition-delay: 260ms">
+                A workspace at the seam of <span>software</span> and
+                <span>studio</span> — code written like sketches, paintings
+                shipped like releases.
+              </p>
+              <a
+                href="#work"
+                class="hero-cta reveal"
+                style="transition-delay: 380ms"
+                onclick="
+                  goTo('work');
+                  return false;
+                "
+              >
+                <span>Enter Archive</span>
+                <svg viewBox="0 0 24 24">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7,7 17,7 17,17" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-strip">
+        <div class="wrap hero-strip-inner">
+          <span class="label">[ justaleks.no ]</span>
+          <span class="label hidden-sm">Scroll ↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ WORK ══════════ -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="section-header">
+          <div>
+            <p class="label reveal">[ 01 · Code ]</p>
+            <h2 class="section-title reveal" style="transition-delay: 120ms">
+              Selected <em>software</em>.
+            </h2>
+          </div>
+          <span class="label" style="display: none" id="proj-count"></span>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ GALLERY ══════════ -->
+    <section id="gallery" class="section">
+      <div class="wrap">
+        <div class="gallery-intro">
+          <div>
+            <p class="label reveal">[ 02 · Canvas ]</p>
+            <h2 class="section-title reveal" style="transition-delay: 120ms">
+              Slow work.<br /><em>Long exposures.</em>
+            </h2>
+          </div>
+          <p class="gallery-note mono reveal" style="transition-delay: 200ms">
+            A rotating archive of paintings, sculpture, and material studies.
+            Most pieces remain in the studio; selected works travel.
+          </p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ ABOUT ══════════ -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <div class="about-grid">
+          <div>
+            <div class="img-wrap about-portrait reveal">
+              <img
+                src="https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/8c10d4ed09e7e850e955f8a76fb0cdecc7a0a8894562d18cae42eb4eff6ea9d4.png"
+                alt="Portrait in the studio"
+              />
+            </div>
+            <p class="label about-fig-label">[ fig. 01 — atelier, 03:14 ]</p>
+          </div>
+          <div class="about-text">
+            <p class="label reveal">[ 00 · About ]</p>
+            <h2 class="about-heading reveal" style="transition-delay: 120ms">
+              Two hands.<br />One <em>grammar</em> of making.
+            </h2>
+            <div class="about-body">
+              <p class="mono reveal" style="transition-delay: 200ms">
+                Jeg er Aleks — utvikler, hobbyist, og fyr med for mange tabs
+                åpne. Startet med Python, dablet i JavaScript, og nå er det ikke
+                til å stoppe. Liker backend mest, men frontend er gøy når det
+                faktisk ser bra ut.
+              </p>
+              <p class="mono reveal" style="transition-delay: 280ms">
+                Mest komfortabel i Python på backend, og skrur sammen frontend
+                som funker. Jobber med Linux og selfhosting på fritiden, samt
+                med masse matlaging. Går på skole, bygger prosjekter, "kjeder
+                meg ikke" — se GitHub-beskrivelsen min for ytterligere
+                kommentar.
+              </p>
+            </div>
+            <div
+              class="timeline reveal"
+              style="transition-delay: 360ms"
+              id="timeline"
+            >
+              <!-- injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ SKILLS ══════════ -->
+    <section id="skills">
+      <div class="wrap skills-label"><p class="label">[ 03 · Toolbox ]</p></div>
+      <div class="marquee-track marquee-row1" id="marquee1"></div>
+      <div class="marquee-track marquee-row2" id="marquee2"></div>
+    </section>
+
+    <!-- ══════════ CONTACT ══════════ -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div>
+            <p class="label reveal">[ 04 · Contact ]</p>
+            <h2 class="contact-heading reveal" style="transition-delay: 100ms">
+              Let's <em>build</em>.<br />Or <em>create</em>.
+            </h2>
+            <div
+              class="contact-meta mono reveal"
+              style="transition-delay: 220ms"
+            >
+              <p>For commissions, collaborations, or a quiet coffee in Oslo.</p>
+              <a
+                href="mailto:kontakt@justaleks.no"
+                class="contact-email ul-link"
+              >
+                kontakt@justaleks.no
+                <svg viewBox="0 0 24 24">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7,7 17,7 17,17" />
+                </svg>
+              </a>
+              <div class="contact-socials">
+                <a
+                  href="https://github.com/wineredbbqsauce"
+                  target="_blank"
+                  rel="noopener"
+                  class="ul-link"
+                  >GitHub</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/aleksander-røising-003a31297/"
+                  target="_blank"
+                  rel="noopener"
+                  class="ul-link"
+                  >LinkedIn</a
+                >
+              </div>
+            </div>
+          </div>
+          <div>
+            <form
+              class="contact-form reveal"
+              style="transition-delay: 300ms"
+              onsubmit="handleSubmit(event)"
+            >
+              <div class="field">
+                <label class="label">[ Name ]</label>
+                <input type="text" name="name" autocomplete="name" />
+              </div>
+              <div class="field">
+                <label class="label">[ Email ]</label>
+                <input type="email" name="email" autocomplete="email" />
+              </div>
+              <div class="field">
+                <label class="label">[ Message ]</label>
+                <textarea name="message" rows="5"></textarea>
+              </div>
+              <button type="submit" class="submit-btn mono">
+                Send Transmission
+                <svg viewBox="0 0 24 24">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22,2 15,22 11,13 2,9" />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ FOOTER ══════════ -->
+    <footer>
+      <div class="wrap footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h3 class="serif">justaleks.no</h3>
+            <p class="label">[ Studio · Code · Oslo, NO ]</p>
+          </div>
+          <div class="footer-col">
+            <h4 class="label">Index</h4>
+            <ul>
+              <li><a href="#work" class="ul-link">Work</a></li>
+              <li><a href="#gallery" class="ul-link">Gallery</a></li>
+              <li><a href="#about" class="ul-link">About</a></li>
+              <li><a href="#contact" class="ul-link">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="label">Elsewhere</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://github.com/wineredbbqsauce"
+                  target="_blank"
+                  rel="noopener"
+                  class="ul-link"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/aleksander-røising-003a31297/"
+                  target="_blank"
+                  rel="noopener"
+                  class="ul-link"
+                  >LinkedIn</a
+                >
+              </li>
+              <li>
+                <a href="mailto:kontakt@justaleks.no" class="ul-link">Email</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom mono">
+          <span id="year-copy"></span>
+          <span>Hand-built · Hosted on GitHub Pages</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
