@@ -289,7 +289,7 @@ doubled.forEach((s) => {
 
 // Footer year
 document.getElementById("year-copy").textContent =
-  `© ${new Date().getFullYear()} Aleks — Bygget med altfor mange tabs åpne.`;
+  `Ø ${new Date().getFullYear()} Aleks — Bygget med altfor mange tabs åpne.`;
 
 /* ══════════════════════════════════════
    NAVBAR scroll
