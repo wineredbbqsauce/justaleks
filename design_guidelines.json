@@ -1,0 +1,94 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Luxury/Editorial) & 1 (Organic & Earthy)",
+  "vibe": "Dark Atelier - A minimalist, realistic intersection of a sterile developer terminal and a textured artist studio. High contrast between code (Mono) and art (Serif).",
+  "colors": {
+    "background_primary": "#0F0F0F",
+    "background_secondary": "#171716",
+    "text_primary": "#E8E6E1",
+    "text_secondary": "#A3A099",
+    "accent_primary": "#8B7355", 
+    "accent_secondary": "#6B705C",
+    "border_color": "rgba(232, 230, 225, 0.1)"
+  },
+  "typography": {
+    "headings": {
+      "font_family": "'Cormorant Garamond', serif",
+      "style": "Expressive, organic, editorial art. Use font-light for elegance or font-medium. Tight tracking.",
+      "h1": "text-5xl md:text-6xl tracking-tighter leading-none",
+      "h2": "text-3xl md:text-4xl tracking-tight leading-tight"
+    },
+    "body": {
+      "font_family": "'IBM Plex Mono', monospace",
+      "style": "Sterile, precise, tech-focused. Use for all paragraphs, labels, and UI elements.",
+      "base": "text-sm md:text-base leading-relaxed text-[#A3A099]",
+      "labels": "text-xs tracking-[0.2em] uppercase text-[#8B7355]"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Use generous spacing. Section padding should be py-24 or py-32. Gap sizes in grids should be gap-8 to gap-12.",
+    "grid_strategy": "The 'Tetris' Grid (Asymmetric Bento) for projects and art. Never fill the grid completely—leave negative space for breathing room.",
+    "alignment": "Optical alignment. Prefer left-alignment for text blocks. Asymmetrical placement of images.",
+    "container": "max-w-7xl mx-auto px-6 md:px-12"
+  },
+  "components_and_surfaces": {
+    "cards": "Flat background (background_secondary), 1px subtle border (border_color), NO shadow. Hover state: border color darkens to accent_primary, slight opacity shift on image.",
+    "buttons": "Minimalist. Either 1px solid border with transparent background and text_primary, or solid accent_primary background with background_primary text. Hover: Invert colors or add a subtle text shadow.",
+    "inputs": "Shadcn based. Customization: Remove border-radius entirely (rounded-none). Use border-b only or a sharp 1px full border. Background transparent. Focus: border-accent_primary.",
+    "navbar": "Sticky top. Crystal Glassmorphism: bg-[#0F0F0F]/80, backdrop-blur-xl, 1px bottom border-white/5. Links in uppercase mono font.",
+    "textures": "MANDATORY: Implement a subtle, fixed full-screen SVG noise/grain overlay (pointer-events-none, opacity 5-10%) to remove digital flatness and add a 'realistic/film' feel."
+  },
+  "motion_and_interactions": {
+    "scroll": "Smooth scrolling (Lenis highly recommended).",
+    "hover": "Images in galleries should have a very slow, subtle scale effect (scale-105 duration-700). Text links should have a 1px underline that expands from left to right on hover.",
+    "page_load": "Staggered fade-up for grid items. Use framer-motion."
+  },
+  "sections_breakdown": {
+    "hero": "Overlapping layers. Abstract background image (hero_background) with low opacity (bg-[#0F0F0F]/70) blending to background_primary at bottom. Giant serif heading 'JUST ALEKS'. Mono subheading '> IT Developer && Visual Artist'.",
+    "about": "Split layout. Left: about_profile image. Right: Narrative text mixing tech stack logic with artistic philosophy.",
+    "it_projects": "Rigid bento grid. Images (it_project_1, it_project_2). Mono typography dominates here. GitHub links styled as terminal commands.",
+    "art_gallery": "Masonry or staggered grid. Images (art_gallery_1, art_gallery_2). Serif typography dominates here. Focus on imagery with minimal captions.",
+    "skills": "Slow horizontal marquee (react-fast-marquee). Outlined large text or muted small mono text widely spaced.",
+    "contact": "Minimalist form. Large 'Let\\'s Build / Create' serif heading. Sharp, border-only input fields."
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/adb4491ee434e1fc120ab8b677079d1a0c3f3184d28403485e08bfbd6ff96e5a.png",
+      "description": "Abstract realistic dark texture with subtle grid lines and charcoal strokes."
+    },
+    "about_profile": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/8c10d4ed09e7e850e955f8a76fb0cdecc7a0a8894562d18cae42eb4eff6ea9d4.png",
+      "description": "Cinematic portrait in a dark atelier, mixed lighting (warm lamp + cool monitor)."
+    },
+    "it_project_1": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/08fada2c575406c039363a473d8a3f1e53bdf2a2406b4bb3dadf244630fbb1cc.png",
+      "description": "Aesthetic close-up of a code editor, muted colors."
+    },
+    "it_project_2": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/33fc7ab17df6871ffae5a1ccffefaa1e6dc2575fb4b973b8baaf158df02053d4.png",
+      "description": "Minimalist geometric tech architecture in dark grey."
+    },
+    "art_gallery_1": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/9e764fd71f8062bf355eda1fd87b97af143f15be2b02dc250be0ab9f9f7e9986.png",
+      "description": "Minimalist raw stone and metal sculpture."
+    },
+    "art_gallery_2": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/75d8837c-c363-4b19-9a5a-312b1b3be6ac/images/9e7d8ebe1494ff5e316127d7e75a0e4efd8b2417235a9f64391fd009a8335504.png",
+      "description": "Abstract oil painting with heavy texture, raw umber."
+    }
+  },
+  "testing_and_accessibility": {
+    "testing_attributes": "All interactive elements (buttons, form inputs, nav links) MUST include data-testid attributes (e.g., data-testid='nav-about-link', data-testid='contact-submit-button').",
+    "accessibility": "Ensure contrast ratio on text over the grain texture. Add aria-labels to gallery images. Focus rings must be sharp and use accent_primary."
+  },
+  "instructions_to_main_agent": [
+    "Build a static React application using HTML/Tailwind for layout and customized Shadcn UI for interactive components.",
+    "Do NOT use placeholder images. Only use the URLs provided in the media section.",
+    "Include a global CSS grain/noise overlay to give the site a tactile, realistic feel. It must have pointer-events: none.",
+    "Set up Lenis for smooth scrolling.",
+    "Import Cormorant Garamond and IBM Plex Mono from Google Fonts.",
+    "Ensure the hero section overlay isn't too dark; the abstract background must be visible (use max bg-black/50 or a gradient).",
+    "For the art gallery, use standard div-based grid layouts (CSS grid or flex masonry) but ensure images are not cropped awkwardly.",
+    "Use Phosphor Icons (or lucide-react if Phosphor isn't available) with a thin weight."
+  ]
+}
